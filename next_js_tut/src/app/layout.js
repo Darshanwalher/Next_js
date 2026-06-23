@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import Navbar from "@/component/Navbar";
+import MainNav from "@/component/MainNav";
 
 
 
@@ -17,7 +17,6 @@ export default function RootLayout({ children }) {
       className={`h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
         {children}
       </body>
     </html>
