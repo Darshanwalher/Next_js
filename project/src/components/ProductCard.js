@@ -23,16 +23,21 @@ const ProductCard = ({ product }) => {
         </span>
 
         {/* Title */}
-        <h2 className="mt-4 text-lg font-semibold text-white h-14 overflow-hidden">
+        <h2 className="mt-4 text-lg font-semibold text-white line-clamp-2">
           {product.title}
         </h2>
 
+        {/* Description */}
+        <p className="mt-3 text-sm text-gray-400 line-clamp-3 leading-6">
+          {product.description}
+        </p>
+
         {/* Rating */}
-        <div className="flex items-center gap-2 mt-3">
+        <div className="flex items-center gap-2 mt-4">
           <FaStar className="text-yellow-400" />
           <span className="text-gray-200">{product.rating.rate}</span>
-          <span className="text-gray-400 text-sm">
-            ({product.rating.count})
+          <span className="text-gray-500 text-sm">
+            ({product.rating.count} Reviews)
           </span>
         </div>
 
