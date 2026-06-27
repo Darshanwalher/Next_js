@@ -7,6 +7,7 @@ import { Mail, Lock, Eye, EyeOff, ArrowRight, Sparkles } from "lucide-react";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { api } from "@/lib/api";
+import { useAuth } from "@/context/authContext";
 
 
 export default function LoginPage() {
@@ -18,6 +19,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
+  const { hydrateUser } = useAuth();
 
 
   
@@ -37,6 +39,7 @@ export default function LoginPage() {
     try {
       const res = await api.post('/api/auth/login', formData);
       console.log(res);
+      await hydrateUser();
       alert("Successfully logged in!");
       router.push('/home');
     } catch (err) {

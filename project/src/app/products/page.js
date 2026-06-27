@@ -1,4 +1,5 @@
 import ProductCard from "@/components/ProductCard";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 const Page = async () => {
   const res = await fetch("https://fakestoreapi.com/products", {
@@ -8,7 +9,8 @@ const Page = async () => {
   const products = await res.json();
 
   return (
-    <main className="min-h-screen bg-background">
+    <ProtectedRoute>
+      <main className="min-h-screen bg-background">
       <div className="container mx-auto px-6 py-10">
 
         {/* Heading */}
@@ -33,6 +35,7 @@ const Page = async () => {
 
       </div>
     </main>
+    </ProtectedRoute>
   );
 };
 

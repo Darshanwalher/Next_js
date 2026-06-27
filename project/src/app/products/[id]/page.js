@@ -1,5 +1,6 @@
 import React from "react";
 import ProductDetailsClient from "@/components/ProductDetailsClient";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
@@ -36,9 +37,11 @@ const Page = async ({ params }) => {
   const product = await res.json();
 
   return (
+    <ProtectedRoute>
     <main className="min-h-screen py-6 md:py-10">
       <ProductDetailsClient product={product} />
     </main>
+    </ProtectedRoute>
   );
 };
 

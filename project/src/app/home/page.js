@@ -2,10 +2,14 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, Sparkles, TrendingUp, ShieldCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ProtectedRoute from "@/components/ProtectedRoute";
+
+
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-20 py-8 md:py-16">
+    <ProtectedRoute>
+      <div className="flex flex-col gap-20 py-8 md:py-16">
       
       {/* Hero Section */}
       <section className="relative overflow-hidden rounded-3xl bg-radial from-indigo-500/10 via-background to-background border border-border p-8 md:p-16 text-center flex flex-col items-center justify-center min-h-[60vh] gap-6">
@@ -108,6 +112,7 @@ export default function Page() {
         </div>
       </section>
       
-    </div>
+      </div>
+    </ProtectedRoute>
   );
 }
