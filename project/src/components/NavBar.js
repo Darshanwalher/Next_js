@@ -7,14 +7,14 @@ const NavBar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
 
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-foreground tracking-tight hover:opacity-90 transition-opacity">
+        <Link href="/home" className="text-2xl font-bold text-foreground tracking-tight hover:opacity-90 transition-opacity">
           Street<span className="text-indigo-600 dark:text-indigo-400">Wear</span>
         </Link>
 
         {/* Navigation */}
         <div className="flex items-center gap-6 sm:gap-8">
           <Link
-            href="/"
+            href="/home"
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Home
@@ -25,6 +25,13 @@ const NavBar = () => {
             className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             Products
+          </Link>
+
+          <Link
+            href="/login"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Sign In
           </Link>
 
           {/* Theme Toggle */}
