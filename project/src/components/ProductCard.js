@@ -1,64 +1,71 @@
-import { FaStar } from "react-icons/fa";
-import { FiShoppingCart } from "react-icons/fi";
+import Link from "next/link";
+import { Star, ShoppingCart } from "lucide-react";
+
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="group bg-[#111827] rounded-2xl overflow-hidden border border-gray-800 hover:border-indigo-500 shadow-lg hover:shadow-indigo-500/20 transition-all duration-500">
+    <Card className="group overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
 
       {/* Product Image */}
-      <div className="bg-[#1F2937] h-64 flex items-center justify-center overflow-hidden">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="h-44 object-contain group-hover:scale-110 transition duration-500"
-        />
-      </div>
+      <Link href={`/products/${product.id}`}>
+        <div className="flex h-64 items-center justify-center bg-muted overflow-hidden cursor-pointer">
+          <img
+            src={product.image}
+            alt={product.title}
+            className="h-44 object-contain transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+      </Link>
 
-      {/* Content */}
-      <div className="p-5">
+      <CardContent className="space-y-4 p-5">
 
         {/* Category */}
-        <span className="inline-block px-3 py-1 text-xs rounded-full bg-indigo-500/20 text-indigo-400 capitalize">
+        <Badge variant="secondary" className="capitalize">
           {product.category}
-        </span>
+        </Badge>
 
         {/* Title */}
-        <h2 className="mt-4 text-lg font-semibold text-white line-clamp-2">
-          {product.title}
-        </h2>
+        <Link href={`/products/${product.id}`}>
+          <h2 className="line-clamp-2 cursor-pointer text-lg font-semibold hover:text-primary transition-colors">
+            {product.title}
+          </h2>
+        </Link>
 
         {/* Description */}
-        <p className="mt-3 text-sm text-gray-400 line-clamp-3 leading-6">
+        <p className="line-clamp-3 text-sm text-muted-foreground">
           {product.description}
         </p>
 
         {/* Rating */}
-        <div className="flex items-center gap-2 mt-4">
-          <FaStar className="text-yellow-400" />
-          <span className="text-gray-200">{product.rating.rate}</span>
-          <span className="text-gray-500 text-sm">
+        <div className="flex items-center gap-2 text-sm">
+          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+          <span>{product.rating.rate}</span>
+          <span className="text-muted-foreground">
             ({product.rating.count} Reviews)
           </span>
         </div>
 
-        {/* Price */}
-        <div className="flex items-center justify-between mt-5">
-          <h3 className="text-3xl font-bold text-green-400">
+        {/* Price + Cart */}
+        <div className="flex items-center justify-between">
+          <h3 className="text-3xl font-bold text-green-500">
             ${product.price}
           </h3>
 
-          <button className="bg-indigo-600 hover:bg-indigo-700 p-3 rounded-xl transition">
-            <FiShoppingCart className="text-white text-xl" />
-          </button>
+          <Button size="icon">
+            <ShoppingCart className="h-5 w-5" />
+          </Button>
         </div>
 
-        {/* Buy Button */}
-        <button className="mt-5 w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:scale-105 transition duration-300">
+        {/* Buy Now */}
+        <Button className="w-full">
           Buy Now
-        </button>
+        </Button>
 
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
